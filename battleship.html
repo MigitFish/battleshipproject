@@ -3,15 +3,20 @@
 	<head>
 		<title>Battleship!</title>
 		<link rel="stylesheet" type="text/css" href="battleship.css">
+		<link href="https://fonts.googleapis.com/css?family=Jomhuria" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 	</head>
 	<body>
 
 	<div id="instructionsArea">
 		<h1>Battleship</h1>
-		<p id="instructions">Use the text box to enter your coordinate guess. Try to sink every battleship!</p></br>
+		<p id="instructions">Use the text box to enter your coordinate guess. Try to sink every battleship!</p>
 		<input type="text" id="fireBox">
-		<button onclick="markBoxAction()" >Fire torpedo</button>
+		<button onclick="fireTorpedo()" >Fire torpedo</button>
+	</div>
+	<div>
+		<p id='hitBox'>
+		17 hits left!</p></br>
 	</div>
 
 	<div id="gameboard">

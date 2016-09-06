@@ -2,6 +2,8 @@
 var rows = 10;
 var cols = 10;
 var squareSize = 50;
+var hitNeeded =  17;
+var hitCount = 0;
 
 // gets the container element
 var gameBoardContainer = document.getElementById("gameboard");
@@ -18,7 +20,17 @@ var letterConversion = {
 	"G": 6,
 	"H": 7,
 	"I": 8,
-	"J": 9
+	"J": 9,
+	"a": 0,
+	"b": 1,
+	"c": 2,
+	"d": 3,
+	"e": 4,
+	"f": 5,
+	"g": 6,
+	"h": 7,
+	"i": 8,
+	"j": 9
 }
 var letterArray = ["A","B","C","D","E","F","G","H","I","J"];
 
@@ -33,7 +45,7 @@ for (i = 0; i < cols; i++) {
     // give each div element a unique id based on its row and column, like "s00"
 		square.id = 's' + j + i;
 		square.className = "boardSquare";
-		square.textContent = letterArray[j] + (i + 1);
+
 
 
 
@@ -43,6 +55,7 @@ for (i = 0; i < cols; i++) {
 		// set each grid square's coordinates: multiples of the current row or column number
 		var topPosition = j * squareSize;
 		var leftPosition = i * squareSize;
+		square.textContent = letterArray[j] + (i + 1);
 
 		// use CSS absolute positioning to place each grid square on the page
 		square.style.top = topPosition + 'px';
@@ -66,7 +79,37 @@ var gameBoard = [
 				]
 
 function fireTorpedo() {
+		var gameOver = false;
+		var	userInput = document.getElementById("fireBox").value;
+		console.log(userInput);
+		document.getElementById("fireBox").value = null;
+		var	convertLetterToNumber = userInput.substring(1,0);
+		convertLetterToNumber = letterConversion[convertLetterToNumber];
+		console.log(convertLetterToNumber);
 
-	// Your game logic will go here!
+		var collumn = userInput.substring(1,3) - 1;
+		//document.getElementById("s" + convertLetterToNumber + collumn).style.backgroundColor = "black";
+
+		if (gameBoard[convertLetterToNumber][collumn] == 1){
+				document.getElementById("s" + convertLetterToNumber + collumn).style.backgroundColor = "red";
+				hitCount += 1;
+				document.getElementById("hitBox").textContent = ((17 - hitCount) + " remaining!");
+				console.log(hitCount);
+		}
+		else {
+				document.getElementById("s" + convertLetterToNumber + collumn).style.backgroundColor = "black";
+				hitCount = hitCount;
+				document.getElementById("hitBox").textContent = ((17 - hitCount) + " remaining!");
+		}
+		if (hitCount == 1){
+				gameOver = true;
+		}
+		if(gameOver == true) {
+			$("#instructions").text("YOU SUNK ALL MY BATTLESHIPS!");
+			$("#fireBox").fadeOut();
+			$("#hitBox").fadeOut();
+		}
+
+
 
 }
