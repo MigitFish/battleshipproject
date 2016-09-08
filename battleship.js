@@ -4,6 +4,11 @@ var cols = 10;
 var squareSize = 50;
 var hitNeeded =  17;
 var hitCount = 0;
+var shipCarrier ;
+var shipBattleship ;
+var shipCrusier ;
+var shipSubmarine ;
+var shipDestroyer ;
 
 // gets the container element
 var gameBoardContainer = document.getElementById("gameboard");
@@ -66,17 +71,35 @@ for (i = 0; i < cols; i++) {
 
 // Hardcoded 2D array to indicate where the ships are placed
 var gameBoard = [
-				[0,0,0,1,1,1,1,0,0,0],
 				[0,0,0,0,0,0,0,0,0,0],
 				[0,0,0,0,0,0,0,0,0,0],
-				[0,0,0,0,0,0,1,0,0,0],
-				[0,0,0,0,0,0,1,0,0,0],
-				[1,0,0,0,0,0,1,1,1,1],
-				[1,0,0,0,0,0,0,0,0,0],
-				[1,0,0,1,0,0,0,0,0,0],
-				[1,0,0,1,0,0,0,0,0,0],
-				[1,0,0,0,0,0,0,0,0,0]
+				[0,0,0,0,0,0,0,0,0,0],
+				[0,0,0,0,0,0,0,0,0,0],
+				[0,0,0,0,0,0,0,0,0,0],
+				[0,0,0,0,0,0,0,0,0,0],
+				[0,0,0,0,0,0,0,0,0,0],
+				[0,0,0,0,0,0,0,0,0,0],
+				[0,0,0,0,0,0,0,0,0,0],
+				[0,0,0,0,0,0,0,0,0,0]
 				]
+
+				function placeBoat () {
+			 	 var placingBoat = $("#placeBoatBox").val();
+				 console.log("placingboat is " + placingBoat)
+			 	 document.getElementById("placeBoatBox").value = null;
+			 	 var convertLetterToNumber = placingBoat.substring(0,1);
+
+			 	 convertLetterToNumber = letterConversion[convertLetterToNumber];
+				 console.log(convertLetterToNumber)
+			 	  collumn = placingBoat.substring(1,3) - 1;
+				 console.log(collumn)
+
+			 	 if(gameBoard[convertLetterToNumber][collumn] == 0){
+			 		 gameBoard[convertLetterToNumber][collumn] = 1;
+			 	 }
+
+			 }
+
 
 function fireTorpedo() {
 		var gameOver = false;
@@ -101,7 +124,7 @@ function fireTorpedo() {
 				hitCount = hitCount;
 				document.getElementById("hitBox").textContent = ((17 - hitCount) + " remaining!");
 		}
-		if (hitCount == 1){
+		if (hitCount == 17){
 				gameOver = true;
 		}
 		if(gameOver == true) {
@@ -109,7 +132,5 @@ function fireTorpedo() {
 			$("#fireBox").fadeOut();
 			$("#hitBox").fadeOut();
 		}
-
-
 
 }

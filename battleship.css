@@ -50,6 +50,12 @@ p, button, input {
   margin:0 auto 2em auto;
   width:500px;
 }
+#instructionsArea2 {
+  position:relative;
+  margin:0 auto 2em auto;
+  width:500px;
+  margin-bottom: 5px;
+}
 body{
   background-image: url('http://thelistenersclub.timothyjuddviolin.com/wp-content/uploads/sites/2/2014/08/small_waves_1920x1200.jpg');
   font-family: 'Jomhuria', cursive;
@@ -60,7 +66,7 @@ button {
   font-family: 'Jomhuria', cursive;
   color: white;
   background-color: grey;
-  margin-left: 150px;
+
 }
 #doneBox {
   font-family: 'Jomhuria', cursive;
