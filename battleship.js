@@ -4,11 +4,7 @@ var cols = 10;
 var squareSize = 50;
 var hitNeeded =  17;
 var hitCount = 0;
-var shipCarrier ;
-var shipBattleship ;
-var shipCrusier ;
-var shipSubmarine ;
-var shipDestroyer ;
+var ship;
 
 // gets the container element
 var gameBoardContainer = document.getElementById("gameboard");
@@ -93,10 +89,36 @@ var gameBoard = [
 				 console.log(convertLetterToNumber)
 			 	  collumn = placingBoat.substring(1,3) - 1;
 				 console.log(collumn)
+				 direction = placingBoat.substring(4,10);
+				 var placingBoat2 = $("#placeBoatBox2").val();
+				 document.getElementById("placeBoatBox").value = null;
+				 ship = placingBoat2.substring(0);
 
-			 	 if(gameBoard[convertLetterToNumber][collumn] == 0){
+				 if(gameBoard[convertLetterToNumber][collumn] == 0){
 			 		 gameBoard[convertLetterToNumber][collumn] = 1;
 			 	 }
+
+				/* if(direction == "down" && ship == carrier){
+					 for (i = 0; i < 4;i++){
+					 gameBoard[convertLetterToNumber - 1][collumn]
+				 }
+				 }
+				 else if (direction == "up" && ship == carrier){
+					 for (i = 0; i < 4;i++){
+					 gameBoard[convertLetterToNumber + 1][collumn]
+				 }
+				 }
+				 else if (direction == left && ship == carrier){
+					 for (i = 0; i < 4;i++){
+					 gameBoard[convertLetterToNumber][collumn - 1]
+				 }
+				 }
+				 else if (direction == right && ship == carrier){
+					 for (i = 0; i < 4;i++){
+					 gameBoard[convertLetterToNumber][collumn + 1]
+				 }
+			 }*/
+
 
 			 }
 
